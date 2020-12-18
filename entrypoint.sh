@@ -14,7 +14,6 @@ npx npm-check-updates -u --packageFile ${WORKING_DIRECTORY}/package.json --targe
 
 if [ "${PACKAGE_MANAGER}" == 'npm' ]; then
   npm i --package-lock-only --prefix ${WORKING_DIRECTORY}
-  npm audit fix --force --prefix ${WORKING_DIRECTORY}
 elif [ "${PACKAGE_MANAGER}" == 'yarn' ]; then
   yarn install --cwd ${WORKING_DIRECTORY}
 else
