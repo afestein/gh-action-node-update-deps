@@ -6,7 +6,7 @@ description: Updates Node dependencies and creates a pull request with the chang
 inputs:
   bump-version:
     description: If set, bumps the package version based on value (e.g. patch).
-    default: ''
+    default: ""
   git-user-email:
     description: Git user.email to use for the commit.
     default: 41898282+github-actions[bot]@users.noreply.github.com
@@ -21,6 +21,12 @@ inputs:
   pull-request-labels:
     description: Comma-delimited labels to apply to the pull request.
     default: dependencies
+  target:
+    description: Target version to upgrade to - latest, newest, greatest, minor, patch.
+    default: latest
+  working-directory:
+    description: Run the package commands in a specific project directory
+    default: ./
 runs:
   using: docker
   image: Dockerfile
@@ -31,3 +37,5 @@ runs:
     - ${{ inputs.bump-version }}
     - ${{ inputs.pre-commit-script }}
     - ${{ inputs.pull-request-labels }}
+    - ${{ inputs.target }}
+    - ${{ inputs.working-directory }}
